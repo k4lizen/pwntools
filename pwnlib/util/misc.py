@@ -450,12 +450,10 @@ end tell
     log.debug("Launching a new terminal: %r" % argv)
 
     stdin = stdout = stderr = open(os.devnull, 'r+b')
-    if terminal == 'tmux' or terminal == 'kitty':
+    if terminal == 'tmux' or terminal in ('kitty', 'kitten'):
         stdout = subprocess.PIPE
 
     p = subprocess.Popen(argv, stdin=stdin, stdout=stdout, stderr=stderr, preexec_fn=preexec_fn)
-
-    kittyid = None
 
     if terminal == 'tmux':
         out, _ = p.communicate()
@@ -469,7 +467,7 @@ end tell
         with subprocess.Popen((qdbus, konsole_dbus_service, '/Sessions/{}'.format(last_konsole_session),
                                'org.kde.konsole.Session.processId'), stdout=subprocess.PIPE) as proc:
             pid = int(proc.communicate()[0].decode())
-    elif terminal == 'kitty':
+    elif terminal in ('kitty', 'kitten'):
         pid = p.pid
         
         out, _ = p.communicate()
@@ -503,7 +501,7 @@ end tell
             try:
                 if terminal == 'qdbus':
                     os.kill(pid, signal.SIGHUP)
-                elif terminal == 'kitty':
+                elif terminal in ('kitty', 'kitten'):
                     subprocess.Popen(["kitten", "@", "close-window", "--match", "id:{}".format(kittyid)], stderr=stderr)
                 else:
                     os.kill(pid, signal.SIGTERM)

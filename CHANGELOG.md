@@ -73,7 +73,9 @@ The table below shows which release corresponds to each branch, and what date th
 | [2.2.0](#220)    |          | Jan 5, 2015
 
 ## 5.0.0 (`dev`)
+- [#2522][2522] Support starting a kitty debugging window with the 'kitten' command
 
+[2522]: https://github.com/Gallopsled/pwntools/pull/2522
 
 ## 4.15.0 (`beta`)
 - [#2508][2508] Ignore a warning when compiling with asm on nix
