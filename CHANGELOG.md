@@ -73,8 +73,11 @@ The table below shows which release corresponds to each branch, and what date th
 | [2.2.0](#220)    |          | Jan 5, 2015
 
 ## 5.0.0 (`dev`)
+
+- [#2507][2507] Add `+LINUX` and `+WINDOWS` doctest options and start proper testing on Windows
 - [#2522][2522] Support starting a kitty debugging window with the 'kitten' command
 
+[2507]: https://github.com/Gallopsled/pwntools/pull/2507
 [2522]: https://github.com/Gallopsled/pwntools/pull/2522
 
 ## 4.15.0 (`beta`)
