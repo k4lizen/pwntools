@@ -327,6 +327,9 @@ def run_in_new_terminal(command, terminal=None, args=None, kill_at_exit=True, pr
         elif 'DISPLAY' in os.environ and which('x-terminal-emulator'):
             terminal = 'x-terminal-emulator'
             args     = ['-e']
+        elif 'KITTY_PID' in os.environ and which('kitty') and which('kitten'):
+            terminal = 'kitten'
+            args = ['@', 'launch']
         elif 'KONSOLE_VERSION' in os.environ and which('qdbus'):
             qdbus = which('qdbus')
             window_id = os.environ['WINDOWID']
